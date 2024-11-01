@@ -1,4 +1,5 @@
 import React from 'react';
+import securityimg from '../../assets/Secure data-bro.png';
 
 const Home = () => {
   return (
@@ -21,7 +22,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <span>aqui va la imagen</span>
+            <img src={securityimg} alt="Secure data" className="w-full h-auto" />
           </div>
         </div>
       </div>
