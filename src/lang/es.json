@@ -2,7 +2,8 @@
     "nav": {
       "login": "Iniciar Sesión",
       "register": "Registro",
-      "home": "PassMaster"
+      "home": "PassMaster",
+      "logout": "Cerrar Sesión"
     },
     "hero": {
       "title": "Gestiona tus contraseñas de forma segura y sencilla",

@@ -6,6 +6,7 @@ import { LanguageToggle } from './components/LanguageToggle';
 import { Footer } from './components/Footer';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import DashBoard from './pages/DashBoard';
 import imgSecure from './assets/Secure data-bro.png';
 
 
@@ -21,7 +22,7 @@ function HomePage() {
             <Home className="w-5 h-5" />
             <span className="font-semibold">{t.nav.home}</span>
           </Link>
-          
+
           <div className="flex items-center space-x-4">
             <LanguageToggle />
             <Link to="/login" className="text-gray-600 hover:text-gray-800 px-4 py-2 rounded-lg transition-colors">
@@ -46,11 +47,12 @@ function HomePage() {
             <div className="pt-4">
               <Link
                 to="/register"
-                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors transform hover:scale-105 duration-200 flex items-center space-x-2"
+                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors transform hover:scale-105 duration-200 flex items-center justify-center text-center space-x-2"
               >
                 <span>{t.hero.cta}</span>
                 <Lock className="w-4 h-4" />
               </Link>
+
             </div>
           </div>
 
@@ -58,7 +60,7 @@ function HomePage() {
             <div className="relative">
               <div className="absolute inset-0 bg-indigo-100 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
               <div className="relative bg-white p-8 rounded-full shadow-lg">
-              <img src={imgSecure} alt="Secure data" className="w-128 h-128" />
+                <img src={imgSecure} alt="Secure data" className="w-128 h-128" />
               </div>
             </div>
           </div>
@@ -77,6 +79,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
     </Router>
   );

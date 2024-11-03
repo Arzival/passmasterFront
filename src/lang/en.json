@@ -2,7 +2,8 @@
     "nav": {
       "login": "Login",
       "register": "Sign Up",
-      "home": "PassMaster"
+      "home": "PassMaster",
+      "logout": "Logout"
     },
     "hero": {
       "title": "Manage your passwords securely and easily",
