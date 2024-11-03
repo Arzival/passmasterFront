@@ -1,0 +1,28 @@
+{
+    "nav": {
+      "login": "Login",
+      "register": "Sign Up",
+      "home": "PassMaster"
+    },
+    "hero": {
+      "title": "Manage your passwords securely and easily",
+      "description": "PassMaster allows you to generate and store strong passwords securely. Keep all your credentials protected with military-grade encryption and access them from any device.",
+      "cta": "Sign up for more"
+    },
+    "auth": {
+      "email": "Email address",
+      "password": "Password",
+      "name": "Full name",
+      "loginTitle": "Welcome back",
+      "loginButton": "Sign In",
+      "registerTitle": "Create an account",
+      "registerButton": "Sign Up",
+      "noAccount": "Don't have an account?",
+      "hasAccount": "Already have an account?"
+    },
+    "footer": {
+      "madeBy": "Made by Armando.Dev",
+      "with": "with",
+      "coffee": "coffee"
+    }
+  }

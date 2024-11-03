@@ -1,0 +1,28 @@
+{
+    "nav": {
+      "login": "Iniciar Sesión",
+      "register": "Registro",
+      "home": "PassMaster"
+    },
+    "hero": {
+      "title": "Gestiona tus contraseñas de forma segura y sencilla",
+      "description": "PassMaster te permite generar y almacenar contraseñas fuertes de manera segura. Mantén todas tus credenciales protegidas con encriptación de nivel militar y accede a ellas desde cualquier dispositivo.",
+      "cta": "Regístrate para más"
+    },
+    "auth": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "name": "Nombre completo",
+      "loginTitle": "Bienvenido de nuevo",
+      "loginButton": "Iniciar Sesión",
+      "registerTitle": "Crear una cuenta",
+      "registerButton": "Registrarse",
+      "noAccount": "¿No tienes cuenta?",
+      "hasAccount": "¿Ya tienes cuenta?"
+    },
+    "footer": {
+      "madeBy": "Hecho por Armando.Dev",
+      "with": "con",
+      "coffee": "café"
+    }
+  }
