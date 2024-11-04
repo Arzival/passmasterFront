@@ -23,6 +23,20 @@
     "registerSuccess": "Usuario creado con éxito, ya puedes iniciar sesión",
     "registerError": "Error al crear el usuario, intenta de nuevo"
   },
+  "dashboard": {
+    "secretWord": "Palabra Secreta",
+    "secretWordButton": "Palabra Secreta",
+    "secretWordDescription": "Aquí podrás registrar la palabra clave la cual vas a necesitar para ver las contraseñas guardadas, ya que, estas están encriptadas y la palabra clave te ayudará a desencriptar, puede ser una sola palabra o una oración.",
+    "system": "Sistema",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "generatePassword": "Generar Contraseña",
+    "save": "Guardar",
+    "viewPassword": "Ver Contraseña",
+    "enterSecretWord": "Ingresa palabra secreta",
+    "cancel": "Cancelar",
+    "accept": "Aceptar"
+  },
   "footer": {
     "madeBy": "Hecho por Armando.Dev",
     "with": "con",

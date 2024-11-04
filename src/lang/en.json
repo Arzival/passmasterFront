@@ -23,6 +23,20 @@
     "registerSuccess": "User created successfully, you can now log in",
     "registerError": "Failed to create user, please try again"
   },
+  "dashboard": {
+    "secretWord": "Secret Word",
+    "secretWordButton": "Secret Word",
+    "secretWordDescription": "Here you can register the key word that you will need to view the saved passwords, since they are encrypted and the key word will help you decrypt them. It can be a single word or a sentence.",
+    "system": "System",
+    "username": "Username",
+    "password": "Password",
+    "generatePassword": "Generate Password",
+    "save": "Save",
+    "viewPassword": "View Password",
+    "enterSecretWord": "Enter secret word",
+    "cancel": "Cancel",
+    "accept": "Accept"
+  },
   "footer": {
     "madeBy": "Made by Armando.Dev",
     "with": "with",

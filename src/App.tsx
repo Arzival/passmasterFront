@@ -6,7 +6,7 @@ import { LanguageToggle } from './components/LanguageToggle';
 import { Footer } from './components/Footer';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import DashBoard from './pages/DashBoard';
+import { Dashboard } from './pages/DashBoard';
 import imgSecure from './assets/Secure data-bro.png';
 
 
@@ -79,7 +79,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
