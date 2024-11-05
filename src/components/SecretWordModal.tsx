@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { saveSecretWord } from '../requests/dashboard.request';
 
 interface SecretWordModalProps {
   isOpen: boolean;
@@ -17,11 +18,16 @@ export function SecretWordModal({ isOpen, onClose, translations }: SecretWordMod
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle secret word submission here
-    console.log('Secret word saved:', secretWord);
-    onClose();
+    try {
+      // Llamada a la request saveSecretWord con el valor del input
+      const response = await saveSecretWord(secretWord);
+      console.log('Secret word saved:', response);
+      onClose(); // Cerrar el modal después de guardar
+    } catch (error) {
+      console.error("Error saving secret word:", error);
+    }
   };
 
   return (

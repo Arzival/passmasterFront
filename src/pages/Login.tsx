@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { Footer } from '../components/Footer';
 import { LanguageToggle } from '../components/LanguageToggle';
 import { Lock, Home } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginsend } from '../requests/login.request';
+
+const sendDataLogin = async (email: string, password: string, navigate: any) => {
+  try {
+    const response = await loginsend(email, password);
+    console.log(response);
+
+    if (response.access_token && response.user_id) {
+      // Guarda los datos de autenticación en localStorage
+      localStorage.setItem('userdata', JSON.stringify({
+        access_token: response.access_token,
+        token_type: response.token_type,
+        user_id: response.user_id,
+      }));
+      
+      // Redirige al usuario a la ruta /dashboard
+      navigate('/dashboard');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    // Aquí podrías manejar el error, como mostrar un mensaje al usuario
+  }
+};
 
 export function Login() {
   const { translations: t } = useLanguage();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault(); // Evita el envío del formulario
+    sendDataLogin(email, password, navigate);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
@@ -30,7 +61,7 @@ export function Login() {
             {t.auth.loginTitle}
           </h2>
           
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 {t.auth.email}
@@ -38,6 +69,8 @@ export function Login() {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               />
             </div>
@@ -49,6 +82,8 @@ export function Login() {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               />
             </div>

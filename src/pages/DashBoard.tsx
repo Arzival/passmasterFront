@@ -6,6 +6,7 @@ import { Home, Eye, EyeOff, Key } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SecretWordModal } from '../components/SecretWordModal';
 import { PasswordCard } from '../components/PasswordCard';
+import { getPassSuggestion, savePassword } from '../requests/dashboard.request';
 
 export function Dashboard() {
   const { translations: t } = useLanguage();
@@ -26,13 +27,28 @@ export function Dashboard() {
     { id: 5, system: 'LinkedIn', username: 'professional.user' },
   ];
 
-  const handleGeneratePassword = () => {
-    console.log('contraseña generada');
+  const handleGeneratePassword = async () => {
+    try {
+      const response = await getPassSuggestion();
+      setFormData((prevData) => ({
+        ...prevData,
+        password: response.password // Actualiza el campo de password con la respuesta
+      }));
+    } catch (error) {
+      console.error("Error generating password:", error);
+    }
   };
 
-  const handleSave = () => {
-    // Handle save logic here
-    console.log('Saving:', formData);
+  const handleSave = async () => {
+    try {
+      // Llamar a savePassword pasando los valores de formData
+      const response = await savePassword(formData.password, formData.system, formData.username);
+      console.log('Password saved:', response);
+      // Aquí puedes manejar lo que suceda después de guardar, como limpiar el formulario o mostrar una notificación
+      setFormData({ system: '', username: '', password: '' });
+    } catch (error) {
+      console.error("Error saving password:", error);
+    }
   };
 
   if (!t || !t.dashboard) {
