@@ -33,9 +33,11 @@
     "generatePassword": "Generar Contraseña",
     "save": "Guardar",
     "viewPassword": "Ver Contraseña",
+    "hidePassword": "Ocultar Contraseña",
     "enterSecretWord": "Ingresa palabra secreta",
     "cancel": "Cancelar",
-    "accept": "Aceptar"
+    "accept": "Aceptar",
+    "copyToClipboard": "Copiar al portapapeles"
   },
   "footer": {
     "madeBy": "Hecho por Armando.Dev",

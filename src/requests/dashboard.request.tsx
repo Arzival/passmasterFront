@@ -80,4 +80,49 @@ export const savePassword = async (password:String, sistema:String, user:String)
     }
 };
 
+export const getSistemsPerUser = async () => {
+    try {
+        const { accessToken, userId } = getAuthData();
+
+        const response = await axios.post(
+            API_URL + "get-sistems",
+            {
+                user_id: userId
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            }
+        );
+
+        return response.data;
+    } catch (error: any) {
+        return error.response ? error.response.data : { message: "An error occurred" };
+    }
+};
+
+export const getPasswords = async (secret_word:String, sistema_id:Number) => {
+    try {
+        const { accessToken, userId } = getAuthData();
+
+        const response = await axios.post(
+            API_URL + "get-passwords",
+            {
+                user_id: userId,
+                secret_word,
+                sistema_id
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            }
+        );
+
+        return response.data;
+    } catch (error: any) {
+        return error.response ? error.response.data : { message: "An error occurred" };
+    }
+}
 

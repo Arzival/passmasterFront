@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { Footer } from '../components/Footer';
 import { LanguageToggle } from '../components/LanguageToggle';
@@ -6,7 +6,7 @@ import { Home, Eye, EyeOff, Key } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SecretWordModal } from '../components/SecretWordModal';
 import { PasswordCard } from '../components/PasswordCard';
-import { getPassSuggestion, savePassword } from '../requests/dashboard.request';
+import { getPassSuggestion, savePassword, getSistemsPerUser } from '../requests/dashboard.request';
 
 export function Dashboard() {
   const { translations: t } = useLanguage();
@@ -17,15 +17,22 @@ export function Dashboard() {
     username: '',
     password: ''
   });
+  const [systems, setSystems] = useState([]); // Estado para almacenar los sistemas del usuario
 
-  // Mock data for cards - in a real app, this would come from a database
-  const mockPasswords = [
-    { id: 1, system: 'Gmail', username: 'user@gmail.com' },
-    { id: 2, system: 'Facebook', username: 'user.name' },
-    { id: 3, system: 'Twitter', username: 'username123' },
-    { id: 4, system: 'Instagram', username: 'user.gram' },
-    { id: 5, system: 'LinkedIn', username: 'professional.user' },
-  ];
+  // Definir fetchSystems fuera de useEffect para poder llamarlo cuando sea necesario
+  const fetchSystems = async () => {
+    try {
+      const response = await getSistemsPerUser();
+      setSystems(response.sistems); // Guardar los sistemas en el estado
+    } catch (error) {
+      console.error("Error fetching systems:", error);
+    }
+  };
+
+  // Llamar a fetchSystems cuando se monte el componente
+  useEffect(() => {
+    fetchSystems();
+  }, []);
 
   const handleGeneratePassword = async () => {
     try {
@@ -41,11 +48,14 @@ export function Dashboard() {
 
   const handleSave = async () => {
     try {
-      // Llamar a savePassword pasando los valores de formData
       const response = await savePassword(formData.password, formData.system, formData.username);
       console.log('Password saved:', response);
-      // Aquí puedes manejar lo que suceda después de guardar, como limpiar el formulario o mostrar una notificación
+
+      // Limpiar el formulario
       setFormData({ system: '', username: '', password: '' });
+
+      // Volver a llamar a fetchSystems para actualizar la lista de sistemas
+      fetchSystems();
     } catch (error) {
       console.error("Error saving password:", error);
     }
@@ -131,10 +141,12 @@ export function Dashboard() {
 
           {/* Password Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {mockPasswords.map((password) => (
-              <PasswordCard 
-                key={password.id} 
-                {...password}
+            {systems.map((system: any) => (
+              <PasswordCard
+                key={system.id}
+                system={system.sistema}
+                username={system.user}
+                systemId={system.id}
                 translations={t.dashboard}
               />
             ))}
@@ -143,9 +155,9 @@ export function Dashboard() {
       </main>
 
       <Footer />
-      
-      <SecretWordModal 
-        isOpen={isModalOpen} 
+
+      <SecretWordModal
+        isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         translations={t.dashboard}
       />
