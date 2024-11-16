@@ -21,7 +21,7 @@ Este proyecto es el frontend de **PassMaster**, una aplicación para gestionar c
 ### Pasos
 1. Clonar este repositorio:
    ```bash
-   git clone https://github.com/tuusuario/passmaster-frontend.git
+   git clone https://github.com/Arzival/passmasterFront.git
    cd passmaster-frontend
    ```
 
