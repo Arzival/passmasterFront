@@ -146,4 +146,3 @@ Sirve localmente la versión generada por el comando `build`.
 ---
 
 ¡Gracias por contribuir al proyecto!
-```
