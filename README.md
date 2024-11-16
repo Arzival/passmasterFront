@@ -1,5 +1,3 @@
-
-```markdown
 # PassMaster Frontend
 
 Este proyecto es el frontend de **PassMaster**, una aplicación para gestionar contraseñas de manera segura. Está construido con **Vite**, **React**, **TypeScript**, y **Tailwind CSS**.
