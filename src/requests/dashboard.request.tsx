@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://passmaster.test/api/";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Función para obtener los datos de autenticación desde localStorage
 const getAuthData = () => {

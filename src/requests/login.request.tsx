@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://passmaster.test/api/";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const loginsend = async (email:String, password:String) => {
   try {
